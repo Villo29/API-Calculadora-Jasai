@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
-
+const https = require('https');
+const fs = require('fs');
 const app = express();
 const port = 3000;
 
@@ -15,7 +16,7 @@ app.use(express.json());
 https.createServer({
     cert: fs.readFileSync('/etc/letsencrypt/archive/api.jasailive.xyz/fullchain1.pem'),
     key: fs.readFileSync('/etc/letsencrypt/archive/api.jasailive.xyz/privkey1.pem')
-}, app).listen(PUERTO, function () {
+}, app).listen(port, function () {
     console.log('Servidor https corriendo en el puerto 443');
 })
 app.get('/', function (req, res) {
