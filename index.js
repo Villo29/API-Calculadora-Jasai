@@ -29,11 +29,12 @@ app.get('/', function (req, res) {
 let estadisticas = {
     total_personas: 0,
     moda: [],
-    mediana: null,
+    mediana: null,  
     desviacion_estandar: null,
     S: null,
     S2: null,
-    Ai: null
+    Ai: null,
+    tiempo_envio: null
 };
 
 // Endpoint para obtener las estadísticas
@@ -46,9 +47,4 @@ app.post('/stats', (req, res) => {
     // Aquí actualizamos el objeto estadisticas con los datos recibidos en el cuerpo de la solicitud
     estadisticas = { ...estadisticas, ...req.body };
     res.status(200).send('Estadísticas actualizadas');
-});
-
-// Iniciar el servidor para escuchar en el puerto especificado
-app.listen(port, () => {
-    console.log(`API escuchando en http://localhost:${port}`);
 });
